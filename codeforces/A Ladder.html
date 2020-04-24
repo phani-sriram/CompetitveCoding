@@ -1,0 +1,1488 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0028)https://a2oj.com/ladder?ID=4 -->
+<html xmlns="http://www.w3.org/1999/xhtml" class=" canvas canvastext geolocation rgba hsla multiplebgs borderimage borderradius boxshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions  video audio localstorage sessionstorage webworkers applicationcache fontface"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<script type="text/javascript" async="" src="./A Ladder_files/ga.js"></script><script type="text/javascript">
+function makeHttpObject() {
+	try {return new XMLHttpRequest();}
+	catch (error) {}
+	try {return new ActiveXObject("Msxml2.XMLHTTP");}
+	catch (error) {}
+	try {return new ActiveXObject("Microsoft.XMLHTTP");}
+	catch (error) {}
+	return null;
+}
+
+function judge_changed() {
+	var judges = document.getElementById("Judge").options;
+	var judge = "";
+	for (var i = 0; i < judges.length; i++)
+		if (judges[i].selected) {
+			judge = judges[i].value;
+			break;
+		}
+	var request = makeHttpObject();
+	if(request == null)
+		return;
+	request.open("GET", "judge?Judge=" + judge, false);
+	request.send(null);
+}
+
+function problem_changed() {
+	var sd = document.getElementById("selectedDiv");
+	sd.innerHTML = "";
+	var problem = document.getElementById("Problem").value;
+	var index = problem.lastIndexOf("[");
+	if (index == -1)
+		return;
+	var ID = problem.substr(index + 1);
+	index = ID.indexOf(" ");
+	if (index == -1)
+		return;
+	ID = ID.substr(0, index);
+	var url = "";
+		if (problem.indexOf(" (A2 Online Judge) [") != -1)
+		url = "https://a2oj.com/p?ID=" + ID + "";
+	else if (problem.indexOf(" (UVA) [") != -1)
+		url = "https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=" + ID + "";
+	else if (problem.indexOf(" (SPOJ) [") != -1)
+		url = "http://www.spoj.com/problems/" + ID + "/";
+	else if (problem.indexOf(" (Live Archive) [") != -1)
+		url = "https://icpcarchive.ecs.baylor.edu/index.php?option=onlinejudge&page=show_problem&problem=" + ID + "";
+	else if (problem.indexOf(" (Codeforces) [") != -1)
+		url = "http://codeforces.com/problemset/problem/" + ID + "";
+	else if (problem.indexOf(" (TJU) [") != -1)
+		url = "http://acm.tju.edu.cn/toj/showp" + ID + ".html";
+	else if (problem.indexOf(" (SGU) [") != -1)
+		url = "http://acm.sgu.ru/problem.php?contest=0&problem=" + ID + "";
+	else if (problem.indexOf(" (PKU) [") != -1)
+		url = "http://poj.org/problem?id=" + ID + "";
+	else if (problem.indexOf(" (Timus) [") != -1)
+		url = "http://acm.timus.ru/problem.aspx?space=1&num=" + ID + "";
+	else if (problem.indexOf(" (ZOJ) [") != -1)
+		url = "http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=" + ID + "";
+	else if (problem.indexOf(" (URI) [") != -1)
+		url = "https://www.urionlinejudge.com.br/judge/en/problems/view/" + ID + "";
+	else if (problem.indexOf(" (SPOJ Brazil) [") != -1)
+		url = "http://br.spoj.com/problems/" + ID + "/";
+	else if (problem.indexOf(" (SPOJ Poland) [") != -1)
+		url = "http://pl.spoj.com/problems/" + ID + "/";
+	else if (problem.indexOf(" (SPOJ Vietnam) [") != -1)
+		url = "http://vn.spoj.com/problems/" + ID + "/";
+
+	if (url == "")
+		return;
+	sd.innerHTML = "<center><a href=\""+url+"\" target=\"_blank\">Selected Problem Link</a></center>";
+}
+</script>
+
+<link href="https://a2oj.com/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+<title>A2 Online Judge</title>
+
+<meta name="description" content="A2 Online Judge (or Virtual Online Contests) is an online judge with hundreds of problems and it helps you to create, run and participate in virtual contests using problems from the following online judges: A2 Online Judge, Live Archive, Codeforces, Timus, SPOJ, TJU, SGU, PKU, ZOJ, URI. It also helps you to manage and track your programming comepetions training for you and your friends. It helps for ICPC ACM and IOI training also.">
+<meta name="keywords" content="ahmed aly,ahmed aly tools,voc,virtual online contests,programming,c++,java,contest,contests,competition,competitions,programming contest,programming contests,programming compitition,programming compititions,cf,codeforces,live archive,uva,spoj,tju,sgu,pku,timus,zoj,uri,programming tools,a2oj,a2 online judge">
+<meta name="author" content="Ahmed Aly">
+<link href="./A Ladder_files/default.css" rel="stylesheet" type="text/css">
+<link href="./A Ladder_files/DroidSansMono.css" rel="stylesheet" type="text/css">
+
+		<link rel="stylesheet" href="./A Ladder_files/nav.css">
+		<!--[if IE]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+<!-- START TRACKING CODE -->
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push( [ '_setAccount', 'UA-16947566-3' ]);
+	_gaq.push( [ '_trackPageview' ]);
+
+	( function() {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+				: 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+<!-- END TRACKING CODE -->
+
+<!-- START TABLE SORTER CODE -->
+<link rel="stylesheet" href="./A Ladder_files/style.css" type="text/css" id="" media="print, projection, screen">
+<script type="text/javascript" src="./A Ladder_files/jquery.tablesorter.js"></script>
+	
+<script type="text/javascript" id="js">
+$(document).ready(function() {
+	$.tablesorter.defaults.sortList = [[0,0]];
+	$.tablesorter.defaults.textExtraction = ['complex'];
+	$("table").tablesorter();
+});
+</script>
+<!-- END TABLE SORTER CODE -->
+
+<!-- START AUTO COMPLETE CODE -->
+<script src="./A Ladder_files/jquery-latest.js"></script>
+<link rel="stylesheet" href="./A Ladder_files/jquery.autocomplete.css" type="text/css">
+<script type="text/javascript" src="./A Ladder_files/jquery.bgiframe.min.js"></script>
+<script type="text/javascript" src="./A Ladder_files/jquery.dimensions.js"></script>
+<script type="text/javascript" src="./A Ladder_files/jquery.autocomplete.js"></script>
+
+<script>
+$(document).ready(function(){
+	$("#Problem").autocomplete("problems",{
+    	delay: 200,
+		scrollHeight: 220,
+    	selectFirst: false,
+    	cacheLength: 0,
+    	afterSelect: problem_changed
+	});
+});
+</script>
+<!-- END AUTO COMPLETE CODE -->
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+function toggle()
+{
+	if(document.getElementById("selection").checked)
+		window.location = 'ladder?ID=4&My=true';
+	else
+		window.location = 'ladder?ID=4';
+}
+</script>
+
+
+<style>@font-face{font-family:testfont;src:url('data:font/ttf;base64,AAEAAAAMAIAAAwBAT1MvMliohmwAAADMAAAAVmNtYXCp5qrBAAABJAAAANhjdnQgACICiAAAAfwAAAAEZ2FzcP//AAMAAAIAAAAACGdseWYv5OZoAAACCAAAANxoZWFk69bnvwAAAuQAAAA2aGhlYQUJAt8AAAMcAAAAJGhtdHgGDgC4AAADQAAAABRsb2NhAIQAwgAAA1QAAAAMbWF4cABVANgAAANgAAAAIG5hbWUgXduAAAADgAAABPVwb3N03NkzmgAACHgAAAA4AAECBAEsAAUAAAKZAswAAACPApkCzAAAAesAMwEJAAACAAMDAAAAAAAAgAACbwAAAAoAAAAAAAAAAFBmRWQAAAAgqS8DM/8zAFwDMwDNAAAABQAAAAAAAAAAAAMAAAADAAAAHAABAAAAAABGAAMAAQAAAK4ABAAqAAAABgAEAAEAAgAuqQD//wAAAC6pAP///9ZXAwAAAAAAAAACAAAABgBoAAAAAAAvAAEAAAAAAAAAAAAAAAAAAAABAAIAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEACoAAAAGAAQAAQACAC6pAP//AAAALqkA////1lcDAAAAAAAAAAIAAAAiAogAAAAB//8AAgACACIAAAEyAqoAAwAHAC6xAQAvPLIHBADtMrEGBdw8sgMCAO0yALEDAC88sgUEAO0ysgcGAfw8sgECAO0yMxEhESczESMiARDuzMwCqv1WIgJmAAACAFUAAAIRAc0ADwAfAAATFRQWOwEyNj0BNCYrASIGARQGKwEiJj0BNDY7ATIWFX8aIvAiGhoi8CIaAZIoN/43KCg3/jcoAWD0JB4eJPQkHh7++EY2NkbVRjY2RgAAAAABAEH/+QCdAEEACQAANjQ2MzIWFAYjIkEeEA8fHw8QDxwWFhwWAAAAAQAAAAIAAIuYbWpfDzz1AAsEAAAAAADFn9IuAAAAAMWf0i797/8zA4gDMwAAAAgAAgAAAAAAAAABAAADM/8zAFwDx/3v/98DiAABAAAAAAAAAAAAAAAAAAAABQF2ACIAAAAAAVUAAAJmAFUA3QBBAAAAKgAqACoAWgBuAAEAAAAFAFAABwBUAAQAAgAAAAEAAQAAAEAALgADAAMAAAAQAMYAAQAAAAAAAACLAAAAAQAAAAAAAQAhAIsAAQAAAAAAAgAFAKwAAQAAAAAAAwBDALEAAQAAAAAABAAnAPQAAQAAAAAABQAKARsAAQAAAAAABgAmASUAAQAAAAAADgAaAUsAAwABBAkAAAEWAWUAAwABBAkAAQBCAnsAAwABBAkAAgAKAr0AAwABBAkAAwCGAscAAwABBAkABABOA00AAwABBAkABQAUA5sAAwABBAkABgBMA68AAwABBAkADgA0A/tDb3B5cmlnaHQgMjAwOSBieSBEYW5pZWwgSm9obnNvbi4gIFJlbGVhc2VkIHVuZGVyIHRoZSB0ZXJtcyBvZiB0aGUgT3BlbiBGb250IExpY2Vuc2UuIEtheWFoIExpIGdseXBocyBhcmUgcmVsZWFzZWQgdW5kZXIgdGhlIEdQTCB2ZXJzaW9uIDMuYmFlYzJhOTJiZmZlNTAzMiAtIHN1YnNldCBvZiBKdXJhTGlnaHRiYWVjMmE5MmJmZmU1MDMyIC0gc3Vic2V0IG9mIEZvbnRGb3JnZSAyLjAgOiBKdXJhIExpZ2h0IDogMjMtMS0yMDA5YmFlYzJhOTJiZmZlNTAzMiAtIHN1YnNldCBvZiBKdXJhIExpZ2h0VmVyc2lvbiAyIGJhZWMyYTkyYmZmZTUwMzIgLSBzdWJzZXQgb2YgSnVyYUxpZ2h0aHR0cDovL3NjcmlwdHMuc2lsLm9yZy9PRkwAQwBvAHAAeQByAGkAZwBoAHQAIAAyADAAMAA5ACAAYgB5ACAARABhAG4AaQBlAGwAIABKAG8AaABuAHMAbwBuAC4AIAAgAFIAZQBsAGUAYQBzAGUAZAAgAHUAbgBkAGUAcgAgAHQAaABlACAAdABlAHIAbQBzACAAbwBmACAAdABoAGUAIABPAHAAZQBuACAARgBvAG4AdAAgAEwAaQBjAGUAbgBzAGUALgAgAEsAYQB5AGEAaAAgAEwAaQAgAGcAbAB5AHAAaABzACAAYQByAGUAIAByAGUAbABlAGEAcwBlAGQAIAB1AG4AZABlAHIAIAB0AGgAZQAgAEcAUABMACAAdgBlAHIAcwBpAG8AbgAgADMALgBiAGEAZQBjADIAYQA5ADIAYgBmAGYAZQA1ADAAMwAyACAALQAgAHMAdQBiAHMAZQB0ACAAbwBmACAASgB1AHIAYQBMAGkAZwBoAHQAYgBhAGUAYwAyAGEAOQAyAGIAZgBmAGUANQAwADMAMgAgAC0AIABzAHUAYgBzAGUAdAAgAG8AZgAgAEYAbwBuAHQARgBvAHIAZwBlACAAMgAuADAAIAA6ACAASgB1AHIAYQAgAEwAaQBnAGgAdAAgADoAIAAyADMALQAxAC0AMgAwADAAOQBiAGEAZQBjADIAYQA5ADIAYgBmAGYAZQA1ADAAMwAyACAALQAgAHMAdQBiAHMAZQB0ACAAbwBmACAASgB1AHIAYQAgAEwAaQBnAGgAdABWAGUAcgBzAGkAbwBuACAAMgAgAGIAYQBlAGMAMgBhADkAMgBiAGYAZgBlADUAMAAzADIAIAAtACAAcwB1AGIAcwBlAHQAIABvAGYAIABKAHUAcgBhAEwAaQBnAGgAdABoAHQAdABwADoALwAvAHMAYwByAGkAcAB0AHMALgBzAGkAbAAuAG8AcgBnAC8ATwBGAEwAAAAAAgAAAAAAAP+BADMAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAQACAQIAEQt6ZXJva2F5YWhsaQ==')}</style></head>
+<body class="">
+    	<script>
+			var el = document.getElementsByTagName("body")[0];
+			el.className = "";
+		</script>
+        <noscript>
+        	&lt;!--[if IE]&gt;
+            	&lt;link rel="stylesheet" href="css/ie.css"&gt;
+            &lt;![endif]--&gt;
+        </noscript>
+        
+
+<center>
+<table width="100%">
+<tbody><tr>
+<td>
+        
+
+
+<div id="wrapper"><!-- start header -->
+
+<div id="logo">
+<table width="100%">
+<tbody><tr>
+<td style="vertical-align: bottom;"><a href="https://a2oj.com/"><img src="./A Ladder_files/logo.png"></a></td>
+<td>
+<h1 style="padding-top: 11px;">A<sup>2</sup> Online Judge</h1>
+<h2 class="author">»&nbsp;&nbsp;&nbsp;&nbsp; by <a href="https://www.facebook.com/ahmed.aly.tc" target="_blank" style="text-decoration: none;">Ahmed Aly</a></h2>
+<br>
+<h3>Sponsored by <b><a href="https://www.facebook.com/elcoachacademy/" target="_blank" style="text-decoration: none;">Coach Academy</a></b> &amp; <b><a href="https://www.facebook.com/acmacpc/" target="_blank" style="text-decoration: none;">ACPC</a></b>, <a href="https://www.codechef.com/" target="_blank" style="text-decoration: none;">CodeChef</a> and <a href="http://www.codability.net/" target="_blank" style="text-decoration: none;">Codability</a></h3>
+</td>
+<td style="text-align: right; padding-top: 27px;">
+<iframe src="./A Ladder_files/like.html" scrolling="no" frameborder="0" style="border:none; height:45px"></iframe>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+<div id="header3"><div align="right"><a href="https://a2oj.com/profile?Username=sim3995" style="font-size: 15px;">sim3995</a> - <a href="https://a2oj.com/account" style="font-size: 15px;">My Account</a> - <a href="https://a2oj.com/?Username=sim3995" style="font-size: 15px;">My Contests</a> - <a href="https://a2oj.com/?signOut=true" style="font-size: 15px;">Sign Out</a></div></div>
+
+
+<div id="header2">
+<div id="menu2">
+
+        <nav id="topNav">
+          <ul>
+<li><a href="https://a2oj.com/">Contests</a></li><li><a href="https://a2oj.com/ladders"><font color="red">Ladders</font></a></li><li><a href="https://a2oj.com/ps">Problems</a></li><li><a href="https://a2oj.com/status">Status</a></li><li><a href="https://a2oj.com/categories">Categories</a></li><li><a href="https://a2oj.com/groups">Groups</a></li><li><a href="javascript:void();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;More&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>^</span></a><ul><li><center><a href="http://goo.gl/Fq5mru" target="_blank">GCJ Tools</a></center></li><li><center><a href="https://a2oj.com/codes?My=true">Source Codes</a></center></li><li><center><a href="https://a2oj.com/finder">Problems Finder</a></center></li><li><center><a href="https://a2oj.com/users">Users</a></center></li><li><center><a href="https://a2oj.com/teams">Teams</a></center></li><li><center><a href="https://a2oj.com/cumulative">Cumulative Rank</a></center></li></ul></li><li class="last"><a href="https://a2oj.com/about">About</a></li>
+          </ul>
+        </nav>
+        
+        
+        <script src="./A Ladder_files/modernizr.js"></script>
+		<script>
+			(function($){
+				
+				//cache nav
+				var nav = $("#topNav");
+				
+				//add indicator and hovers to submenu parents
+				nav.find("li").each(function() {
+					if ($(this).find("ul").length > 0) {
+						$("<span>").text("^").appendTo($(this).children(":first"));
+
+						//show subnav on hover
+						$(this).mouseenter(function() {
+							$(this).find("ul").stop(true, true).slideDown();
+						});
+						
+						//hide submenus on exit
+						$(this).mouseleave(function() {
+							$(this).find("ul").stop(true, true).slideUp();
+						});
+					}
+				});
+			})(jQuery);
+		</script>
+
+
+</div>
+</div>
+<!-- end header --></div>
+<!-- start page -->
+</td>
+</tr>
+
+
+<tr>
+
+<td style="vertical-align: top;">
+<center>
+<table>
+<tbody><tr style="max-height: 0px; padding: 0px;">
+<td style="max-height: 0px; padding: 0px; min-width: 165px;"></td>
+<td style="max-height: 0px; padding: 0px; min-width: 1060px;"></td>
+<td style="max-height: 0px; padding: 0px; min-width: 165px;"></td>
+</tr>
+<tr>
+<td style="padding: 0px; vertical-align: top;">
+<div id="leftAd">
+
+
+</div>
+</td>
+<td style="padding: 0px; vertical-align: top;">
+<div id="page">
+
+<font size="3">
+<center>
+
+
+
+
+
+
+
+<div style="font-family: &#39;Droid Sans Mono&#39;, sans-serif; font-size: 20px; font-weight: bold;">
+<table>
+<tbody><tr style="background: #E0E0E0;">
+<td style="padding: 10px;"><a href="https://a2oj.com/leaveladder?ID=4">Leave Ladder</a></td>
+
+</tr>
+</tbody></table>
+
+</div>
+
+<br>
+
+<table>
+
+<tbody><tr>
+<td colspan="2"><center><b>Ladder Name: </b>4 - Codeforces Div. 2, A (by <a href="https://a2oj.com/profile?Username=ahmed_aly">ahmed_aly</a>)
+<br><br>
+</center>
+</td>
+</tr>
+
+<tr>
+<td colspan="2"><center><b>Description: </b><br>List of random Codeforces problems, all of them are Div. 2 A problems. The problems are sorted, the most solved problem comes first. This is a good practice for whoever is beginner in programming problems.
+<br><br>
+</center>
+</td>
+</tr>
+
+<tr>
+<td colspan="2"><center><b>Difficulty Level: </b>2
+<br><br>
+</center>
+</td>
+</tr>
+
+
+</tbody></table>
+
+
+
+
+<br>
+<b>Ladder Problems</b>
+<br><font color="red">(After solving a problem, <a href="https://a2oj.com/update2?Username=sim3995&amp;LadderID=4">click here</a> to update the solved problems)</font>
+<table cellspacing="1" class="tablesorter" style="text-align: center;vertical-align:middle;">
+<thead>
+<tr>
+<th>ID</th>
+<th>Problem Name</th>
+<th>Online Judge</th>
+<th>Contest</th>
+<th>Difficulty Level</th>
+<th>Depends On</th>
+</tr>
+</thead>
+<tbody>
+<tr class="acc22">
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/4/A" target="_blank">Watermelon</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #4 (Div. 2 Only)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle"></td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/71/A" target="_blank">Way Too Long Words</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #65 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 1</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/118/A" target="_blank">String Task</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #89 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 2</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">4</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/112/A" target="_blank">Petya and Strings</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #85 (Div. 2 Only)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 3</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">5</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/339/A" target="_blank">Helpful Maths</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #197 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 4</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">6</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/160/A" target="_blank">Twins</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #111 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 5</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">7</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/58/A" target="_blank">Chat room</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #54 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 6</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">8</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/122/A" target="_blank">Lucky Division</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #91 (Div. 2 Only)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 7</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">9</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/136/A" target="_blank">Presents</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #97 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 8</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">10</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/263/A" target="_blank">Beautiful Matrix</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #161 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 9</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">11</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/144/A" target="_blank">Arrival of the General</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #103 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 10</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">12</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/451/A" target="_blank">Game With Sticks</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #258 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 11</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">13</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/268/A" target="_blank">Games</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #164 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 12</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">14</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/208/A" target="_blank">Dubstep</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #130 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 13</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">15</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/69/A" target="_blank">Young Physicist</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #63 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 14</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">16</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/337/A" target="_blank">Puzzles</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #196 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 15</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">17</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/479/A" target="_blank">Expression</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #274 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 16</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">18</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/443/A" target="_blank">Anton and Letters</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #253 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 17</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">19</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/469/A" target="_blank">I Wanna Be the Guy</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #268 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 18</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">20</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/318/A" target="_blank">Even Odds</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #188 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 19</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">21</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/466/A" target="_blank">Cheap Travel</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #266 (Div. 2)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 20</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">22</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/313/A" target="_blank">Ilya and Bank Account</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #186 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 21</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">23</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/459/A" target="_blank">Pashmak and Garden</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #261 (Div. 2)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 22</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">24</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/230/A" target="_blank">Dragons</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #142 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 23</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">25</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/476/A" target="_blank">Dreamoon and Stairs</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #272 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 24</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">26</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/490/A" target="_blank">Team Olympiad</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #279 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 25</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">27</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/439/A" target="_blank">Devu, the Singer and Churu, the Joker</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #251 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 26</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">28</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/510/A" target="_blank">Fox And Snake</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #290 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 27</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">29</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/25/A" target="_blank">IQ test</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #25 (Div. 2 Only)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 28</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">30</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/432/A" target="_blank">Choosing Teams</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #246 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 29</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">31</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/330/A" target="_blank">Cakeminator</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #192 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 30</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">32</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/441/A" target="_blank">Valera and Antique Items</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #252 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 31</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">33</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/462/A" target="_blank">Appleman and Easy Task</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #263 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 32</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">34</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/385/A" target="_blank">Bear and Raspberry</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #226 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 33</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">35</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/276/A" target="_blank">Lunch Rush</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #169 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 34</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">36</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/456/A" target="_blank">Laptops</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #260 (Div. 2)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 35</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">37</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/151/A" target="_blank">Soft Drinking</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #107 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 36</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">38</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/378/A" target="_blank">Playing with Dice</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #222 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 37</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">39</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/496/A" target="_blank">Minimum Difficulty</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #283 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 38</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">40</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/255/A" target="_blank">Greg's Workout</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #156 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 39</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">41</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/483/A" target="_blank">Counterexample </a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #275 (Div. 2)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 40</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">42</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/404/A" target="_blank">Valera and X</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #237 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 41</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">43</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/233/A" target="_blank">Perfect Permutation</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #144 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 42</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">44</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/499/A" target="_blank">Watching a movie</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #284 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 43</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">45</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/165/A" target="_blank">Supercentral Point</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #112 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 44</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">46</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/262/A" target="_blank">Roma and Lucky Numbers</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #160 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 45</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">47</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/501/A" target="_blank">Contest</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #285 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 46</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">48</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/189/A" target="_blank">Cut Ribbon</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #119 (Div. 2)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 47</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">49</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/350/A" target="_blank">TL</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #203 (Div. 2)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 48</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">50</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/152/A" target="_blank">Marks</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #108 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 49</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">51</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/265/A" target="_blank">Colorful Stones (Simplified Edition)</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #162 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 50</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">52</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/353/A" target="_blank">Domino</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #205 (Div. 2)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 51</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">53</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/114/A" target="_blank">Cifera</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #86 (Div. 2 Only)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 52</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">54</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/300/A" target="_blank">Array</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #181 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 53</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">55</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/389/A" target="_blank">Fox and Number Game</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #228 (Div. 2)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 54</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">56</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/488/A" target="_blank">Giga Tower</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #278 (Div. 2)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 55</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">57</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/224/A" target="_blank">Parallelepiped</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #138 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 56</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">58</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/445/A" target="_blank">DZY Loves Chessboard</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #254 (Div. 2)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 57</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">59</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/43/A" target="_blank">Football</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #42 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 58</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">60</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/75/A" target="_blank">Life Without Zeros</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #67 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 59</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">61</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/296/A" target="_blank">Yaroslav and Permutations</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #179 (Div. 2)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 60</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">62</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/373/A" target="_blank">Collecting Beats is Fun</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #219 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 61</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">63</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/361/A" target="_blank">Levko and Table</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #210 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 62</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">64</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/355/A" target="_blank">Vasya and Digital Root</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #206 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 63</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">65</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/239/A" target="_blank">Two Bags of Potatoes</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #148 (Div. 2)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 64</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">66</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/437/A" target="_blank">The Child and Homework</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #250 (Div. 2)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 65</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">67</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/363/A" target="_blank">Soroban</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #211 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 66</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">68</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/408/A" target="_blank">Line to Cashier</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #239 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 67</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">69</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/376/A" target="_blank">Lever</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #221 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 68</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">70</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/359/A" target="_blank">Table</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #209 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 69</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">71</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/302/A" target="_blank">Eugeny and Array</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #182 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 70</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">72</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/358/A" target="_blank">Dima and Continuous Line</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #208 (Div. 2)</td>
+<td style="vertical-align:middle">4</td>
+<td style="vertical-align:middle">Solve this problem first: 71</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">73</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/34/A" target="_blank">Reconnaissance 2</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #34 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 72</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">74</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/143/A" target="_blank">Help Vasilisa the Wise 2</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #102 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 73</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">75</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/186/A" target="_blank">Comparing Strings</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #118 (Div. 2)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 74</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">76</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/108/A" target="_blank">Palindromic Times</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #83 (Div. 2 Only)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 75</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">77</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/416/A" target="_blank">Guess a number!</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #241 (Div. 2)</td>
+<td style="vertical-align:middle">4</td>
+<td style="vertical-align:middle">Solve this problem first: 76</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">78</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/194/A" target="_blank">Exams</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #122 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 77</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">79</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/106/A" target="_blank">Card Game</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #82 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 78</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">80</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/257/A" target="_blank">Sockets</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #159 (Div. 2)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 79</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">81</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/298/A" target="_blank">Snow Footprints</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #180 (Div. 2)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 80</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">82</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/279/A" target="_blank">Point on Spiral</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #171 (Div. 2)</td>
+<td style="vertical-align:middle">4</td>
+<td style="vertical-align:middle">Solve this problem first: 81</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">83</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/27/A" target="_blank">Next Test</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #27 (Codeforces format, Div. 2)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 82</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">84</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/370/A" target="_blank">Rook, Bishop and King</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #217 (Div. 2)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 83</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">85</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/49/A" target="_blank">Sleuth</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #46 (Div. 2)</td>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle">Solve this problem first: 84</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">86</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/284/A" target="_blank">Cows and Primitive Roots</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #174 (Div. 2)</td>
+<td style="vertical-align:middle">4</td>
+<td style="vertical-align:middle">Solve this problem first: 85</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">87</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/192/A" target="_blank">Funky Numbers</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #121 (Div. 2)</td>
+<td style="vertical-align:middle">4</td>
+<td style="vertical-align:middle">Solve this problem first: 86</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">88</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/56/A" target="_blank">Bar</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #52 (Div. 2)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 87</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">89</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/234/A" target="_blank">Lefthanders and Righthanders </a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #145 (Div. 2, ACM-ICPC Rules)</td>
+<td style="vertical-align:middle">4</td>
+<td style="vertical-align:middle">Solve this problem first: 88</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">90</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/31/A" target="_blank">Worms Evolution</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #31 (Div. 2, Codeforces format)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 89</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">91</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/305/A" target="_blank">Strange Addition</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #184 (Div. 2)</td>
+<td style="vertical-align:middle">4</td>
+<td style="vertical-align:middle">Solve this problem first: 90</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">92</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/197/A" target="_blank">Plate Game</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #124 (Div. 2)</td>
+<td style="vertical-align:middle">4</td>
+<td style="vertical-align:middle">Solve this problem first: 91</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">93</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/35/A" target="_blank">Shell Game</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #35 (Div. 2)</td>
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle">Solve this problem first: 92</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">94</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/88/A" target="_blank">Chord</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #73 (Div. 2 Only)</td>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle">Solve this problem first: 93</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">95</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/18/A" target="_blank">Triangle</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Beta Round #18 (Div. 2 Only)</td>
+<td style="vertical-align:middle">4</td>
+<td style="vertical-align:middle">Solve this problem first: 94</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">96</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/374/A" target="_blank">Inna and Pink Pony</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #220 (Div. 2)</td>
+<td style="vertical-align:middle">5</td>
+<td style="vertical-align:middle">Solve this problem first: 95</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">97</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/393/A" target="_blank">Nineteen</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #230 (Div. 2)</td>
+<td style="vertical-align:middle">5</td>
+<td style="vertical-align:middle">Solve this problem first: 96</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">98</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/390/A" target="_blank">Inna and Alarm Clock</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #229 (Div. 2)</td>
+<td style="vertical-align:middle">5</td>
+<td style="vertical-align:middle">Solve this problem first: 97</td>
+</tr>
+<tr class="acc22">
+<td style="vertical-align:middle">99</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/397/A" target="_blank">On Segment's Own Points</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #232 (Div. 2)</td>
+<td style="vertical-align:middle">6</td>
+<td style="vertical-align:middle">Solve this problem first: 98</td>
+</tr>
+<tr>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="http://codeforces.com/problemset/problem/200/A" target="_blank">Cinema</a></td>
+<td style="vertical-align:middle">Codeforces</td>
+<td style="vertical-align:middle">Codeforces Round #126 (Div. 2)</td>
+<td style="vertical-align:middle">8</td>
+<td style="vertical-align:middle">Solve this problem first: 99</td>
+</tr>
+</tbody>
+</table>
+<br>
+<b>Ladder Members (Top 50 Only)</b>
+<br>
+<input type="checkbox" id="selection" onchange="toggle();"> View my friends only
+<table cellspacing="1" class="tablesorter" style="text-align: center;vertical-align:middle;">
+<thead>
+<tr>
+<th></th>
+<th>Username</th>
+<th>Solved Count</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="vertical-align:middle">1</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=vgupta">vgupta</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=vgupta">View as vgupta</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">2</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=delta_4d">delta_4d</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=delta_4d">View as delta_4d</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">3</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=KhaledKEE">KhaledKEE</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=KhaledKEE">View as KhaledKEE</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">4</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=mhungry">mhungry</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=mhungry">View as mhungry</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">5</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=ahmedhamed">ahmedhamed</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=ahmedhamed">View as ahmedhamed</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">6</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=mc_mosa">mc_mosa</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=mc_mosa">View as mc_mosa</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">7</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=20120225">20120225</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=20120225">View as 20120225</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">8</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=perseus14">perseus14</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=perseus14">View as perseus14</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">9</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=ilistentoyou">ilistentoyou</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=ilistentoyou">View as ilistentoyou</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">10</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=hitmanbba">hitmanbba</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=hitmanbba">View as hitmanbba</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">11</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=aladdin3">aladdin3</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=aladdin3">View as aladdin3</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">12</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=mridul">mridul</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=mridul">View as mridul</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">13</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=sumpahpemuda">sumpahpemuda</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=sumpahpemuda">View as sumpahpemuda</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">14</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=Abdulrahim+jaradat">Abdulrahim jaradat</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=Abdulrahim+jaradat">View as Abdulrahim jaradat</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">15</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=ALi_Ibrahim">ALi_Ibrahim</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=ALi_Ibrahim">View as ALi_Ibrahim</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">16</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=mutjas">mutjas</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=mutjas">View as mutjas</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">17</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=LuaXD">LuaXD</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=LuaXD">View as LuaXD</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">18</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=Urker">Urker</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=Urker">View as Urker</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">19</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=Andrew95">Andrew95</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=Andrew95">View as Andrew95</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">20</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=mennayahia">mennayahia</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=mennayahia">View as mennayahia</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">21</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=hello321">hello321</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=hello321">View as hello321</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">22</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=Ura">Ura</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=Ura">View as Ura</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">23</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=omarhashim">omarhashim</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=omarhashim">View as omarhashim</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">24</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=youssef01001">youssef01001</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=youssef01001">View as youssef01001</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">25</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=xxqxpxx">xxqxpxx</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=xxqxpxx">View as xxqxpxx</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">26</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=moovon">moovon</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=moovon">View as moovon</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">27</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=Degred">Degred</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=Degred">View as Degred</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">28</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=A.Moharib">A.Moharib</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=A.Moharib">View as A.Moharib</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">29</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=JohnnyJi">JohnnyJi</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=JohnnyJi">View as JohnnyJi</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">30</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=knightrider_12">knightrider_12</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=knightrider_12">View as knightrider_12</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">31</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=stewjon">stewjon</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=stewjon">View as stewjon</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">32</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=R0B0T">R0B0T</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=R0B0T">View as R0B0T</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">33</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=MohamedZain">MohamedZain</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=MohamedZain">View as MohamedZain</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">34</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=shazly">shazly</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=shazly">View as shazly</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">35</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=wael+al+gaml">wael al gaml</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=wael+al+gaml">View as wael al gaml</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">36</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=amr.salamaa">amr.salamaa</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=amr.salamaa">View as amr.salamaa</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">37</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=mahmouddashraf">mahmouddashraf</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=mahmouddashraf">View as mahmouddashraf</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">38</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=omieraa">omieraa</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=omieraa">View as omieraa</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">39</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=xiaowuc1">xiaowuc1</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=xiaowuc1">View as xiaowuc1</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">40</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=paraschadha">paraschadha</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=paraschadha">View as paraschadha</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">41</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=AymanSalah">AymanSalah</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=AymanSalah">View as AymanSalah</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">42</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=Picasso-Abud">Picasso-Abud</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=Picasso-Abud">View as Picasso-Abud</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">43</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=Fady_Ahdy8">Fady_Ahdy8</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=Fady_Ahdy8">View as Fady_Ahdy8</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">44</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=Titan7">Titan7</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=Titan7">View as Titan7</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">45</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=Abdulrahman_hs">Abdulrahman_hs</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=Abdulrahman_hs">View as Abdulrahman_hs</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">46</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=bedosport">bedosport</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=bedosport">View as bedosport</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">47</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=se7so__">se7so__</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=se7so__">View as se7so__</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">48</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=MightyCoder">MightyCoder</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=MightyCoder">View as MightyCoder</a></td>
+</tr>
+<tr>
+<td style="vertical-align:middle">49</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=Iskander">Iskander</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=Iskander">View as Iskander</a></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align:middle">50</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/profile?Username=NourElRashidy">NourElRashidy</a></td>
+<td style="vertical-align:middle">100</td>
+<td style="vertical-align:middle"><a href="https://a2oj.com/ladder?ID=4&amp;Username=NourElRashidy">View as NourElRashidy</a></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+</center>
+</font>
+
+</div>
+</td>
+<td style="padding: 0px; vertical-align: top;">
+<div id="rightAd">
+
+
+</div>
+</td>
+</tr>
+</tbody></table>
+</center>
+<!-- end page -->
+<!-- start footer -->
+<div id="footer">
+<p id="legal">A2OJ © Copyright 2011-2016 <b><a href="https://www.facebook.com/ahmed.aly.tc" target="_blank" style="text-decoration: none;">Ahmed Aly</a></b> All Rights Reserved. A2OJ uses <a href="http://sphere-engine.com/" target="_blank" style="text-decoration: none;">Sphere Engine</a>™ © by <a href="http://sphere-research.com/" target="_blank" style="text-decoration: none;">Sphere Research Labs</a>.</p>
+</div>
+</td>
+
+
+</tr>
+</tbody></table>
+</center><span style="font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 99px; line-height: normal; font-family: testfont, _, serif; position: absolute; visibility: hidden; bottom: 0px;" id="fonttest">........</span>
+<!-- end footer -->
+
+
+
+
+</body></html>
