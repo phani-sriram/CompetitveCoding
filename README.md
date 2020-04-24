@@ -7,6 +7,6 @@ The codeforces questions are in the file ladder.html
 
 The hackerrank codes are solutions to the questions labelled warmup.
 
-Will upload as and when I solve more question.
+Will upload as and when I solve more questions.
 
 Improvements are welcomed
